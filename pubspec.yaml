@@ -1,0 +1,48 @@
+name: food_app
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.2.0
+  smooth_page_indicator: ^1.2.1
+  flutter_otp_text_field: ^1.5.1+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  asset_generator: ^1.0.0
+  build_runner: any
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/Icons/
+    - assets/logo/
+    - assets/onboarding/Illustrations/
+    - assets/social_icon/
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+
+flutter_assets:
+  assets_path: 
+    - assets/icons/Icons/
+    - assets/logo/
+    - assets/onboarding/Illustrations/
+  output_path: lib/core/utils/
+  filename: app_assets.dart
+  field_prefix: resource
+  classname: R
+  ignore_comments: true
+  package_name: food_app
+
+
