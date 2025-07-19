@@ -7,20 +7,21 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
-  supabase_flutter: ^2.0.0
-  cupertino_icons: ^1.0.8
+  flutter_bloc: ^9.1.1
+  flutter_otp_text_field: ^1.5.1+1
   flutter_svg: ^2.2.0
   smooth_page_indicator: ^1.2.1
-  flutter_otp_text_field: ^1.5.1+1
+  supabase_flutter: ^2.0.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^5.0.0
   asset_generator: ^1.0.0
   build_runner: any
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
 
 flutter:
   uses-material-design: true
@@ -36,7 +37,7 @@ flutter:
         - asset: assets/fonts/Poppins-Regular.ttf
 
 flutter_assets:
-  assets_path: 
+  assets_path:
     - assets/icons/Icons/
     - assets/logo/
     - assets/onboarding/Illustrations/
@@ -46,5 +47,3 @@ flutter_assets:
   classname: R
   ignore_comments: true
   package_name: food_app
-
-
