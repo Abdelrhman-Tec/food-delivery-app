@@ -3,6 +3,7 @@ import 'package:food_app/features/auth/presentation/screens/create_profile_scree
 import 'package:food_app/features/auth/presentation/screens/forgot_password_screens.dart';
 import 'package:food_app/features/auth/presentation/screens/login_screens.dart';
 import 'package:food_app/features/auth/presentation/screens/register_screens.dart';
+import 'package:food_app/features/home/presentation/screens/home_screen.dart';
 import 'package:food_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:food_app/features/onboarding/presentation/screens/onboaring_screen_login.dart';
 import 'package:food_app/features/splash/presentation/screens/splash_screen.dart';
@@ -43,6 +44,10 @@ class AppRouter {
       case forgotPassword:
         return MaterialPageRoute(
           builder: (context) => const ForgotPasswordScreens(),
+        );
+      case home:
+        return MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
         );
       case createProfile:
         return MaterialPageRoute(

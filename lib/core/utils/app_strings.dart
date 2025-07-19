@@ -74,7 +74,7 @@ class AppStrings {
   static const String restorePurchases = "Restore purchases";
 
   // Home Screen
-  static const String hiUser = "Hi Daniel";
+  static const String hiUser = "Hi User";
   static const String whatCraving = "What are you carving?";
   static const String search = "search...";
   static const String burgerOffer = "35% OFF on Burgers!";

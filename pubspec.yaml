@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  supabase_flutter: ^2.0.0
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.2.0
   smooth_page_indicator: ^1.2.1
@@ -28,6 +29,7 @@ flutter:
     - assets/logo/
     - assets/onboarding/Illustrations/
     - assets/social_icon/
+    - assets/banners/
   fonts:
     - family: Poppins
       fonts:
