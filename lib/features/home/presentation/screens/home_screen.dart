@@ -15,6 +15,33 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int? selectedIndex;
 
+  void _onCategorySelected(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  Widget _buildCategoryList() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: CategoryModel.categoryList.asMap().entries.map((entry) {
+          final index = entry.key;
+          final item = entry.value;
+          final isSelected = index == selectedIndex;
+
+          return Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () => _onCategorySelected(index),
+              child: CategoryTabs(categoryModel: item, isSelected: isSelected),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,38 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeaderSection(),
+              const HeaderSection(),
               const SizedBox(height: 30),
-              SearchBarSection(),
+              const SearchBarSection(),
               const SizedBox(height: 20),
               OfferBanner(),
               const SizedBox(height: 20),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: List.generate(CategoryModel.categoryList.length, (
-                    index,
-                  ) {
-                    final item = CategoryModel.categoryList[index];
-                    final isSelected = index == selectedIndex;
-
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = index;
-                          });
-                        },
-                        child: CategoryTabs(
-                          categoryModel: item,
-                          isSelected: isSelected,
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-              ),
+              _buildCategoryList(),
             ],
           ),
         ),
