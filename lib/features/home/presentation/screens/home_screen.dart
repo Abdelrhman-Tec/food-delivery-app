@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/core/utils/app_assets.dart';
-import 'package:food_app/core/utils/app_colors.dart';
 import 'package:food_app/features/home/data/model/category_model.dart';
+import 'package:food_app/features/home/data/model/product_model.dart';
 import 'package:food_app/features/home/presentation/widget/category_tabs.dart';
 import 'package:food_app/features/home/presentation/widget/header_section.dart';
 import 'package:food_app/features/home/presentation/widget/offer_banner.dart';
+import 'package:food_app/features/home/presentation/widget/product_card.dart';
 import 'package:food_app/features/home/presentation/widget/search_bar_section.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -44,6 +44,25 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Widget _buildProductList() {
+    return SizedBox(
+      height: 400,
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 20,
+          childAspectRatio: 1.3 / 1.8,
+        ),
+        itemBuilder: (context, index) {
+          final item = ProductModel.productList[index];
+          return ProductCard(productModel: item);
+        },
+        itemCount: ProductModel.productList.length,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,78 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               _buildCategoryList(),
               const SizedBox(height: 20),
-              ProductCard(
-                name: 'Classic Burger',
-                price: 12.75,
-                imagePath: AppAssets.product,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ProductCard extends StatelessWidget {
-  final String name;
-  final double price;
-  final String imagePath;
-  final VoidCallback? onAdd;
-
-  const ProductCard({
-    super.key,
-    this.name = "Classic Burger",
-    this.price = 12.75,
-    this.imagePath = AppAssets.product,
-    this.onAdd,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 166,
-      height: 206,
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.lightGrey200),
-        borderRadius: BorderRadius.circular(14),
-        image: DecorationImage(
-          image: AssetImage(imagePath),
-          alignment: Alignment.topCenter,
-        ),
-      ),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(14),
-              bottomRight: Radius.circular(14),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("\$${price.toStringAsFixed(2)}"),
-                  GestureDetector(
-                    onTap: onAdd,
-                    child: CircleAvatar(
-                      backgroundColor: AppColors.lightGrey200,
-                      radius: 14,
-                      child: Icon(
-                        Icons.add,
-                        color: AppColors.lightTypography500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              _buildProductList(),
             ],
           ),
         ),
