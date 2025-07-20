@@ -3,6 +3,7 @@ import 'package:food_app/features/home/presentation/widget/category_tabs.dart';
 import 'package:food_app/features/home/presentation/widget/header_section.dart';
 import 'package:food_app/features/home/presentation/widget/offer_banner.dart';
 import 'package:food_app/features/home/presentation/widget/search_bar_section.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -19,15 +20,11 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             OfferBanner(),
             const SizedBox(height: 20),
-            
-            CategoryTabs(text: ''),
+            CategoryTabs(text: '',),
           ],
         ),
       ),
     );
   }
 }
-
-
-
 
