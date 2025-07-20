@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/core/utils/app_assets.dart';
+import 'package:food_app/core/utils/app_colors.dart';
 import 'package:food_app/features/home/data/model/category_model.dart';
 import 'package:food_app/features/home/presentation/widget/category_tabs.dart';
 import 'package:food_app/features/home/presentation/widget/header_section.dart';
@@ -58,6 +60,79 @@ class _HomeScreenState extends State<HomeScreen> {
               OfferBanner(),
               const SizedBox(height: 20),
               _buildCategoryList(),
+              const SizedBox(height: 20),
+              ProductCard(
+                name: 'Classic Burger',
+                price: 12.75,
+                imagePath: AppAssets.product,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProductCard extends StatelessWidget {
+  final String name;
+  final double price;
+  final String imagePath;
+  final VoidCallback? onAdd;
+
+  const ProductCard({
+    super.key,
+    this.name = "Classic Burger",
+    this.price = 12.75,
+    this.imagePath = AppAssets.product,
+    this.onAdd,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 166,
+      height: 206,
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.lightGrey200),
+        borderRadius: BorderRadius.circular(14),
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          alignment: Alignment.topCenter,
+        ),
+      ),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(14),
+              bottomRight: Radius.circular(14),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("\$${price.toStringAsFixed(2)}"),
+                  GestureDetector(
+                    onTap: onAdd,
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.lightGrey200,
+                      radius: 14,
+                      child: Icon(
+                        Icons.add,
+                        color: AppColors.lightTypography500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
