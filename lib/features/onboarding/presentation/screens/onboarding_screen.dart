@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/config/routes/app_router.dart';
+import 'package:food_app/core/function/indecator.dart';
 import 'package:food_app/core/utils/app_colors.dart';
 import 'package:food_app/core/utils/app_strings.dart';
 import 'package:food_app/core/utils/app_text_styles.dart';
 import 'package:food_app/core/widgets/custom_appbar.dart';
 import 'package:food_app/core/widgets/custom_button.dart';
 import 'package:food_app/features/onboarding/data/datasources/model/onboarding_model.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -48,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   itemCount: OnboardingModel.onboardingList.length,
                 ),
               ),
-              _indicator(
+              indicator(
                 controller: _controller,
                 pages: OnboardingModel.onboardingList.length,
               ),
@@ -83,19 +83,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  Widget _indicator({required int pages, required PageController controller}) {
-    return SmoothPageIndicator(
-      controller: controller,
-      count: pages,
-      effect: const WormEffect(
-        dotColor: AppColors.lightGrey200,
-        activeDotColor: AppColors.lightTypography500,
-        dotHeight: 13,
-        dotWidth: 13,
-        type: WormType.thin,
-      ),
-    );
-  }
 
   Widget _onboardingSection(
     BuildContext context, {

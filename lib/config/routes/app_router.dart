@@ -6,6 +6,7 @@ import 'package:food_app/features/auth/presentation/screens/register_screens.dar
 import 'package:food_app/features/home/presentation/screens/home_screen.dart';
 import 'package:food_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:food_app/features/onboarding/presentation/screens/onboaring_screen_login.dart';
+import 'package:food_app/features/products_details/presentation/screens/products_details_screen.dart';
 import 'package:food_app/features/splash/presentation/screens/splash_screen.dart';
 
 class AppRouter {
@@ -19,6 +20,7 @@ class AppRouter {
   static const String verifyPhone = '/verify-phone';
   static const String verifyOTP = '/verify-otp';
   static const String createProfile = '/createProfile';
+  static const String productsDetails = '/productsDetails';
   //splash routes
   static const String splash = '/splash';
   //onboarding routes
@@ -52,6 +54,10 @@ class AppRouter {
       case createProfile:
         return MaterialPageRoute(
           builder: (context) => const CreateProfileScreen(),
+        );
+      case productsDetails:
+        return MaterialPageRoute(
+          builder: (context) => const ProductsDetailsScreen(),
         );
       default:
         return MaterialPageRoute(

@@ -6,6 +6,7 @@ import 'package:food_app/features/home/presentation/widget/header_section.dart';
 import 'package:food_app/features/home/presentation/widget/offer_banner.dart';
 import 'package:food_app/features/home/presentation/widget/product_card.dart';
 import 'package:food_app/features/home/presentation/widget/search_bar_section.dart';
+import 'package:food_app/features/products_details/presentation/screens/products_details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -56,7 +57,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         itemBuilder: (context, index) {
           final item = ProductModel.productList[index];
-          return ProductCard(productModel: item);
+          return ProductCard(
+            productModel: item,
+            ontap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => ProductsDetailsScreen(productModel: item),
+              ),
+            ),
+          );
         },
         itemCount: ProductModel.productList.length,
       ),
@@ -79,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
               OfferBanner(),
               const SizedBox(height: 20),
               _buildCategoryList(),
-              const SizedBox(height: 20),
+              const SizedBox(height: 5),
               _buildProductList(),
             ],
           ),

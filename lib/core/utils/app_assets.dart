@@ -151,5 +151,7 @@ class AppAssets {
   static const String facebookIcon = "assets/social_icon/facebook_icon.svg";
   static const String emailIcon = "assets/social_icon/mail_icon.svg";
   static const String product = "assets/prdoucts/burgr.png";
+  static const String product2 = "assets/prdoucts/burger_product_1.jpg";
+  static const String product3 = "assets/prdoucts/burger_product_2.jpg";
   static const String banner1 = "assets/banners/banner1.png";
 }
