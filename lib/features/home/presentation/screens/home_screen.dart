@@ -17,51 +17,51 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int? selectedIndex;
 
-  void _onCategorySelected(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
+  // void _onCategorySelected(int index) {
+  //   setState(() {
+  //     selectedIndex = index;
+  //   });
+  // }
 
-  Widget _buildCategoryList() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: CategoryModel.categoryList.asMap().entries.map((entry) {
-          final index = entry.key;
-          final item = entry.value;
-          final isSelected = index == selectedIndex;
+  // Widget _buildCategoryList() {
+  //   return SingleChildScrollView(
+  //     scrollDirection: Axis.horizontal,
+  //     child: Row(
+  //       children: CategoryModel.categoryList.asMap().entries.map((entry) {
+  //         final index = entry.key;
+  //         final item = entry.value;
+  //         final isSelected = index == selectedIndex;
 
-          return Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: GestureDetector(
-              onTap: () => _onCategorySelected(index),
-              child: CategoryTabs(categoryModel: item, isSelected: isSelected),
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
+  //         return Padding(
+  //           padding: const EdgeInsets.only(right: 10),
+  //           child: GestureDetector(
+  //             onTap: () => _onCategorySelected(index),
+  //             child: CategoryTabs(categoryModel: item, isSelected: isSelected),
+  //           ),
+  //         );
+  //       }).toList(),
+  //     ),
+  //   );
+  // }
 
-  Widget _buildProductList() {
-    return SizedBox(
-      height: 400,
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
-          childAspectRatio: 1.3 / 1.8,
-        ),
-        itemBuilder: (context, index) {
-          final item = ProductModel.productList[index];
-          return ProductCard(productModel: item);
-        },
-        itemCount: ProductModel.productList.length,
-      ),
-    );
-  }
+  // Widget _buildProductList() {
+  //   return SizedBox(
+  //     height: 400,
+  //     child: GridView.builder(
+  //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+  //         crossAxisCount: 2,
+  //         mainAxisSpacing: 20,
+  //         crossAxisSpacing: 20,
+  //         childAspectRatio: 1.3 / 1.8,
+  //       ),
+  //       itemBuilder: (context, index) {
+  //         final item = ProductModel.productList[index];
+  //         return ProductCard(productModel: item);
+  //       },
+  //       itemCount: ProductModel.productList.length,
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               OfferBanner(),
               const SizedBox(height: 20),
-              _buildCategoryList(),
+              // _buildCategoryList(),
               const SizedBox(height: 20),
-              _buildProductList(),
+              // _buildProductList(),
             ],
           ),
         ),
