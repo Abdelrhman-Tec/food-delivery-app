@@ -7,7 +7,14 @@ import 'package:food_app/core/utils/app_text_styles.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showBackButton;
   final Function()? ontap;
-  const CustomAppBar({super.key, required this.showBackButton, this.ontap});
+  final String? title;
+  final String? imagePath;
+  const CustomAppBar({
+    super.key,
+    required this.showBackButton,
+    this.ontap,
+    this.title, this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +40,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             const Spacer(),
           ],
           !showBackButton ? const Spacer(flex: 2) : SizedBox.shrink(),
-          Center(child: SvgPicture.asset(AppAssets.resourceLogoBobo)),
+          showBackButton
+              ? Center(child: SvgPicture.asset(AppAssets.resourceLogoBobo))
+              : Row(
+                  children: [
+                    SvgPicture.asset(
+                      imagePath!,
+                      width: 30,
+                    ),
+                    Center(
+                      child: Text(
+                        title!,
+                        style: AppTextStyles.robotoHeading(
+                          context,
+                        ).copyWith(fontSize: 20),
+                      ),
+                    ),
+                  ],
+                ),
           const Spacer(flex: 2),
         ],
       ),

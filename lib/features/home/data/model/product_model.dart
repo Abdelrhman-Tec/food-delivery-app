@@ -4,12 +4,28 @@ class ProductModel {
   final String name;
   final double price;
   final List<String> imagePath;
+  final int quantity;
 
   ProductModel({
     required this.name,
     required this.price,
     required this.imagePath,
+    this.quantity = 1,
   });
+
+  ProductModel copyWith({
+    String? name,
+    double? price,
+    List<String>? imagePath,
+    int? quantity,
+  }) {
+    return ProductModel(
+      name: name ?? this.name,
+      price: price ?? this.price,
+      imagePath: imagePath ?? this.imagePath,
+      quantity: quantity ?? this.quantity,
+    );
+  }
 
   static List<ProductModel> productList = [
     ProductModel(

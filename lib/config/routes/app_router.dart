@@ -4,6 +4,7 @@ import 'package:food_app/features/auth/presentation/screens/forgot_password_scre
 import 'package:food_app/features/auth/presentation/screens/login_screens.dart';
 import 'package:food_app/features/auth/presentation/screens/register_screens.dart';
 import 'package:food_app/features/home/presentation/screens/home_screen.dart';
+import 'package:food_app/features/home/presentation/widget/home_nav_bar.dart';
 import 'package:food_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:food_app/features/onboarding/presentation/screens/onboaring_screen_login.dart';
 import 'package:food_app/features/products_details/presentation/screens/products_details_screen.dart';
@@ -20,12 +21,21 @@ class AppRouter {
   static const String verifyPhone = '/verify-phone';
   static const String verifyOTP = '/verify-otp';
   static const String createProfile = '/createProfile';
+  //product
   static const String productsDetails = '/productsDetails';
   //splash routes
   static const String splash = '/splash';
   //onboarding routes
   static const String onboarding = '/onboarding';
   static const String onboardingLogin = '/onboardingLogin';
+  //cart
+  static const String cart = '/cart';
+  //notification
+  static const String notification = '/notification';
+  //favorites
+  static const String favorites = '/favorites';
+  //home nav bar
+  static const String homeNavBar = '/homeNavBar';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -58,6 +68,10 @@ class AppRouter {
       case productsDetails:
         return MaterialPageRoute(
           builder: (context) => const ProductsDetailsScreen(),
+        );
+      case homeNavBar:
+        return MaterialPageRoute(
+          builder: (context) => const HomeNavBar(),
         );
       default:
         return MaterialPageRoute(

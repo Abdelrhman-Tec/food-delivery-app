@@ -4,7 +4,7 @@ class ProductImagesSlider extends StatelessWidget {
   final List<String> imagePaths;
   final PageController controller;
 
-  const ProductImagesSlider({
+  const ProductImagesSlider({super.key, 
     required this.imagePaths,
     required this.controller,
   });
