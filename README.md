@@ -17,6 +17,9 @@ A modern, clean, and fast Flutter mobile application for browsing food products,
 ## Screenshots
 
 <div align="center">
+  <img src="assets/screen_app/splash.png" alt="Login Screen" width="200"/>
+  <img src="assets/screen_app/onboarding.png" alt="Login Screen" width="200"/>
+  <img src="assets/screen_app/product_details.png3.png" alt="Login Screen" width="200"/>
   <img src="assets/screen_app/login_screen.png" alt="Login Screen" width="200"/>
   <img src="assets/screen_app/sign_up.png" alt="Sign Up Screen" width="200"/>
   <img src="assets/screen_app/forgot_password.png" alt="Forgot Password" width="200"/>
