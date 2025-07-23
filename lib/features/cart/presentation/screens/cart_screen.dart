@@ -44,6 +44,51 @@ class CartScreen extends StatelessWidget {
                 },
               ),
             ),
+            const SizedBox(height: 20),
+            BlocBuilder<CartCubit, CartState>(
+              builder: (context, state) {
+                if (state is CartUpdate && state.prdouct.isNotEmpty) {
+                  final subtotal = state.prdouct.fold<double>(
+                    0,
+                    (total, product) =>
+                        total + (product.price * product.quantity),
+                  );
+                  const delivery = 3.99;
+                  final total = subtotal + delivery;
+
+                  return Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Text("Subtotal"),
+                          const Spacer(),
+                          Text("\$${subtotal.toStringAsFixed(2)}"),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: const [
+                          Text("Delivery Charges"),
+                          Spacer(),
+                          Text("+\$3.99"),
+                        ],
+                      ),
+                      const Divider(thickness: 0.09, color: Colors.black),
+                      Row(
+                        children: [
+                          const Text("Total"),
+                          const Spacer(),
+                          Text("\$${total.toStringAsFixed(2)}"),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                    ],
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
+              },
+            ),
           ],
         ),
       ),
@@ -125,7 +170,7 @@ class QuantitySelector extends StatelessWidget {
 
         if (state is CartUpdate) {
           final cartProduct = state.prdouct.firstWhere(
-            (p) => p.name == product.name && p.price == product.price,
+            (p) => p.name == product.name,
             orElse: () => product,
           );
           quantity = cartProduct.quantity;

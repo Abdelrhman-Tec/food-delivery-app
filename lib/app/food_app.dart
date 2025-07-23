@@ -13,7 +13,7 @@ class FoodApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: (settings) => AppRouter.onGenerateRoute(settings),
-        initialRoute: AppRouter.homeNavBar,
+        initialRoute: AppRouter.splash,
       ),
     );
   }

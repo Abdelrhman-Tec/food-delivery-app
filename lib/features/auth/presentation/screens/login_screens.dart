@@ -9,8 +9,15 @@ import 'package:food_app/features/auth/presentation/widget/custom_text_form_fiel
 import 'package:food_app/features/auth/presentation/widget/dont_have_an_account.dart';
 import 'package:food_app/features/auth/presentation/widget/header_auth_section.dart';
 
-class LoginScreens extends StatelessWidget {
+class LoginScreens extends StatefulWidget {
   const LoginScreens({super.key});
+
+  @override
+  State<LoginScreens> createState() => _LoginScreensState();
+}
+
+class _LoginScreensState extends State<LoginScreens> {
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,7 @@ class LoginScreens extends StatelessWidget {
         showBackButton: true,
         ontap: () => Navigator.of(context).pop(),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
@@ -40,15 +47,27 @@ class LoginScreens extends StatelessWidget {
               ontap: () =>
                   Navigator.of(context).pushNamed(AppRouter.forgotPassword),
             ),
-            const SizedBox(height: 370),
-            CustomButton(
-              width: double.infinity,
-              height: 52,
-              colorButton: AppColors.lightTypography500,
-              buttonName: AppStrings.login,
-              colorText: AppColors.lightWhite,
-            ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 40),
+            isLoading
+                ? const CircularProgressIndicator()
+                : CustomButton(
+                    ontap: () async {
+                      setState(() => isLoading = true);
+
+                      await Future.delayed(const Duration(seconds: 1));
+
+                      setState(() => isLoading = false);
+                      Navigator.of(
+                        context,
+                      ).pushReplacementNamed(AppRouter.homeNavBar);
+                    },
+                    width: double.infinity,
+                    height: 52,
+                    colorButton: AppColors.lightTypography500,
+                    buttonName: AppStrings.login,
+                    colorText: AppColors.lightWhite,
+                  ),
+            const SizedBox(height: 20),
             dontHaveAnAccount(
               context,
               ontap: () => Navigator.of(context).pushNamed(AppRouter.register),

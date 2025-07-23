@@ -13,7 +13,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.showBackButton,
     this.ontap,
-    this.title, this.imagePath,
+    this.title,
+    this.imagePath,
   });
 
   @override
@@ -44,18 +45,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? Center(child: SvgPicture.asset(AppAssets.resourceLogoBobo))
               : Row(
                   children: [
-                    SvgPicture.asset(
-                      imagePath!,
-                      width: 30,
-                    ),
-                    Center(
-                      child: Text(
-                        title!,
-                        style: AppTextStyles.robotoHeading(
-                          context,
-                        ).copyWith(fontSize: 20),
-                      ),
-                    ),
+                    imagePath != null
+                        ? SvgPicture.asset(imagePath!, width: 30)
+                        : SizedBox.shrink(),
+                    title != null
+                        ? Center(
+                            child: Text(
+                              title!,
+                              style: AppTextStyles.robotoHeading(
+                                context,
+                              ).copyWith(fontSize: 20),
+                            ),
+                          )
+                        : SizedBox.shrink(),
                   ],
                 ),
           const Spacer(flex: 2),
